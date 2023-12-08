@@ -528,14 +528,14 @@
     padding: 10px 5px 10px 5px;
 }
 
-.crimes article div form input {
+.crimes article div input {
    border: 0;
    height: 30px;
    border-radius: 10px 10px 10px 10px;
    margin-top: 20px;
 } 
 
-.crimes article div form button {
+.crimes article div button {
     border: 0;
     background: rgb(3, 15, 77);
     width: 50px;

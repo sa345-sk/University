@@ -5,14 +5,14 @@ import {docRef} from './config/firebase';
 import { useState } from 'react';
 const View = (prop) => {
     const {crime, id} = prop;
-    const commentDoc = doc(docRef, 'crimes', id);
     const [adminComment, setAdminComment] = useState('');
-    const addComment = async (e) => {
-        e.preventDeafult()
+    const commentDoc = doc(docRef, 'crimes', id);
+    const addComment = async () => {
         try {
             await updateDoc(commentDoc, { adminComment: adminComment })
             alert('Successfully updated');
-            console.log('sucess')
+            console.log('sucess');
+            console.log(crime.id)
         } catch (error) {
             console.log(error);
             alert('Failed to lodge complaint');
@@ -36,10 +36,8 @@ const View = (prop) => {
                         <Link style={{ color: '#1e5dff'}}>Contact sender</Link>
                         <Link style={{ color: '#4dc018'}}>Resolve</Link>
                 </main>
-                <form onSubmit={addComment}>
                     <input type="text" placeholder='Add comments...' value={adminComment} onChange={(e) => setAdminComment(e.target.value)}/>
-                    <button>Post</button>
-                </form>
+                    <button onClick={addComment}>Post</button>
             </div>
         </article>
       </div>    
