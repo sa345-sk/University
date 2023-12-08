@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom';
 import {updateDoc, doc} from 'firebase/firestore';
 import {docRef} from './config/firebase';
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 const View = (prop) => {
+    const navigate = useNavigate();
     const {crime, id} = prop;
     const [adminComment, setAdminComment] = useState('');
     const commentDoc = doc(docRef, 'crimes', id);
@@ -12,7 +14,8 @@ const View = (prop) => {
             await updateDoc(commentDoc, { adminComment: adminComment })
             alert('Successfully updated');
             console.log('sucess');
-            console.log(crime.id)
+            console.log(crime.id);
+            navigate('/dashboard');
         } catch (error) {
             console.log(error);
             alert('Failed to lodge complaint');
