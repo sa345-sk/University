@@ -7,7 +7,8 @@ const View = (prop) => {
     const {crime, id} = prop;
     const commentDoc = doc(docRef, 'crimes', id);
     const [adminComment, setAdminComment] = useState('');
-    const addComment = async () => {
+    const addComment = async (e) => {
+        e.preventDeafult()
         try {
             await updateDoc(commentDoc, { adminComment: adminComment })
             alert('Successfully updated');
