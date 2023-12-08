@@ -11,6 +11,7 @@ const View = (prop) => {
         try {
             await updateDoc(commentDoc, { adminComment: adminComment })
             alert('Successfully updated');
+            console.log('sucess')
         } catch (error) {
             console.log(error);
             alert('Failed to lodge complaint');
@@ -35,7 +36,7 @@ const View = (prop) => {
                         <Link style={{ color: '#4dc018'}}>Resolve</Link>
                 </main>
                 <form onSubmit={addComment}>
-                    <input type="text" placeholder='Add comments...' value={addComment} onChange={(e) => setAdminComment(e.target.value)}/>
+                    <input type="text" placeholder='Add comments...' value={adminComment} onChange={(e) => setAdminComment(e.target.value)}/>
                     <button>Post</button>
                 </form>
             </div>
