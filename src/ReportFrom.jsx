@@ -1,8 +1,8 @@
 import { addDoc } from 'firebase/firestore';
 import useFirebase from './useFirebase';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 const ReportForm = () => {
-    const {crimesCollection, getCrimes, error} = useFirebase();
+    const {crimesCollection, getCrimes, error: fi} = useFirebase();
     const [loading, setLoading] = useState(false);
     const [email, settEmail] = useState();
     const [crimeType, setCrimeType] = useState();
@@ -10,39 +10,76 @@ const ReportForm = () => {
     const [body, setBody] = useState();
     const [file, setFile] = useState();
     const [adminComment, setAdminComment] = useState('');
-    const [crimeLocation, setCrimeLocation] = useState();
+    const [crimeLocation, setCrimeLocation] = useState('');
+    const [error, setError] = useState(false);
+    const [message, setMessage] = useState(false);
+    const crimeTypeReset = useRef(null)
+    const dateReset = useRef(null)
+    const bodyReset = useRef(null)
+    const crimeLocationReset = useRef(null)
+    const fileReset = useRef(null)
+    const emailReset = useRef(null)
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
             await addDoc(crimesCollection,{email, crimeType, crimeLocation, body, date, adminComment})
-            alert('Complaint lodged successfully, you will be contacted if necessary.');
+            setMessage(true);
             getCrimes();
+            console.log(fi)
             setLoading(false);
+            setError(false);
+            if (emailReset.current) {
+                emailReset.current.value = '';
+                crimeLocationReset.current.value = '';
+                dateReset.current.value = '';
+                emailReset.current.value = '';
+                crimeTypeReset.current.value = '';
+                bodyReset.current.value = '';
+                let logme = fileReset.current.value = '';
+                console.log(logme)
+            }
         } catch (error) {
             console.log(error);
-            alert('Failed')
             setLoading(false);
+            setError(error);
+            setMessage(false);
         }
      };
     return ( 
     <div className="report-form">
             <div className="form">
+                 {/*This is the report form that the user is going to fill*/}
                 <form onSubmit={handleSubmit}>
                     <h4>Report a crime</h4>
-                    <input type="email" placeholder="Email here" required value={email} onChange={(e) => settEmail(e.target.value)}/>
-                    <input type="text" placeholder="Crime type" required value={crimeType} onChange={(e) => setCrimeType(e.target.value)}/>
-                    <input type="text" placeholder="Crime location" required value={crimeLocation} onChange={(e) => setCrimeLocation(e.target.value)}/>
-                    <textarea placeholder="What happens?" required value={body} onChange={(e) => setBody(e.target.value)}></textarea>
-                    <input type="date" required value={date} onChange={(e) => setDate(e.target.value)}/>
-                    <input type="file" value={file} />
-                    {!loading && <button >Submit</button>}
-                    {loading && <button>Submitng report....</button>}
+                    <input type="email" placeholder="Email here" required value={email} onChange={(e) => settEmail(e.target.value)} ref={emailReset} defaultValue=''/>
+                    <select value={crimeType} onChange={(e) => setCrimeType(e.target.value)} required ref={crimeTypeReset} defaultValue=''>
+                        <option selected>None</option>
+                        <option >Robbery</option>
+                        <option >Fighting</option>
+                        <option >Exam Malpractice</option>
+                        <option>Kidnap</option>
+                        <option >Murder</option>
+                        <option>Cultism</option>
+                        <option >Rape</option>
+                        <option>Drug Trafficking</option>
+                        <option>Financial Crime</option>
+                        <option>Misbehaving</option>
+                    </select>
+                    <input type="text" placeholder="Crime location" required value={crimeLocation} onChange={(e) => setCrimeLocation(e.target.value)} ref={crimeLocationReset} defaultValue=''/>
+                    <textarea placeholder="Kindly write down the detail of the crime." required value={body} onChange={(e) => setBody(e.target.value)} ref={bodyReset} defaultValue=''></textarea>
+                    <label style={{display: 'block', textAlign: 'left', paddingLeft: '50px'}}>Date crime was committed.</label>
+                    <input type="date" required value={date} onChange={(e) => setDate(e.target.value)} ref={dateReset} defaultValue=''/>
+                    <label style={{ display: 'block', textAlign: 'left', paddingLeft: '50px' }}>Add evidence (if any).</label>
+                    <input type="file" value={file} ref={fileReset} defaultValue=''/>
+                    {!loading && <button>Submit</button>}
+                    {loading && <button>Submitng...</button>}
+                    {message && <div style={{ padding: '20px', background: '#effff0', border: '1px solid #2ee719', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#2ee719'}}>Complaint lodged successfully, you will be contacted if necessary.</div>}
+                    {error && <div style={{ padding: '20px', background: '#ffefef', border: '1px solid #e7195a', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#e7195a' }}>{error.message}</div>}
                 </form>
-                {error && <div>{error.message}</div>}
             </div>
     </div> 
     );
 }
- 
+
 export default ReportForm;

@@ -7,8 +7,9 @@ const useFetch = () => {
     let [loading, setLoading] = useState(true);
     let [error, setError] = useState(null);
     let crimesCollection = collection(docRef, 'crimes');
+    //This is the abort controller
     const abortCont = new AbortController();
-
+    //This function gets the latest crimes reported
     async function getCrimes() {
       try {
         const crimes = await getDocs(crimesCollection, {signal: abortCont.signal});
@@ -25,7 +26,7 @@ const useFetch = () => {
     useEffect(() => {
       getCrimes()
       return () => abortCont.abort();
-    }, []);
+    }, [crimes]);
 
     return {crimes, loading, error, crimesCollection, getCrimes};
 }

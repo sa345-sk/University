@@ -1,10 +1,13 @@
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './Home';
-import Dashboard from './Dashboard';
 import Report from './Report';
 import Check from './Check';
 import Login from './Login';
+import Signup from './Signup';
+import Unknown from './Unknown';
+import View from './View';
+import Dashboard from './Dashboard';
 const App = () => {
   
   return (
@@ -13,9 +16,11 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/dashboard/' element={<Dashboard/>}/>
         <Route path='/report' element={<Report/>}/>
-        <Route path='/:id' element={<Check />}/>
+        <Route path='/details/:id' element={<Check />}/>
+        <Route path='/signup' element={<Signup />}/>
+        <Route path='*' element={<Unknown />}/>
       </Routes>
     </div>
     </Router>

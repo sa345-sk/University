@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import login from './assets/login.svg';
 import handCuff from './assets/handcuff.svg';
-const Navbar = () => {
+const Navbar = ({ signOut }) => {
     return ( 
         <div className="navbar">
             <div className="items">
@@ -9,6 +9,7 @@ const Navbar = () => {
                     <h1><Link to='/'><img src={handCuff} alt="handcuff" />Crime <span>Watch</span></Link></h1>
                 </div>
                 <div className="login">
+                    <Link to='/signup'>Signup</Link>
                     <Link to="/login"><img src={login} alt="login" />Login</Link>
                 </div>
             </div>

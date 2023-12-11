@@ -34,6 +34,7 @@ const View = (prop) => {
             <div>
                 <h4>{crime.crimeType}</h4>
                 <p>{crime.body}</p>
+                <p>Admin Comment: {crime.adminComment}</p>
                 <main className="response">
                         <Link style={{ color: '#e7dd19'}}>Process</Link>
                         <Link style={{ color: '#1e5dff'}}>Contact sender</Link>

@@ -25,9 +25,9 @@ const Check = () => {
    }, []);
    return ( 
       <div className="check">
-          {crime && <View crime={crime} id={id}/>}
+         {crime && <View crime={crime} id={id}/>}
          {loading && <div style={{ color: 'rgb(3, 15, 77)', marginLeft: '37rem', marginTop: '20rem' }}>Loading....</div>}
-         {error && <div style={{marginLeft: '37rem', marginTop: '20rem'}}>{error.message}</div>}
+         {error && <div style={{ padding: '20px', background: '#ffefef', border: '1px solid #e7195a', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#e7195a'}}>{error.message}</div>}
       </div>
     );
 }
