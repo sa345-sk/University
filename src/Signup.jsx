@@ -8,7 +8,6 @@ const Signup = () => {
     const [error, setError] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState(null);
-    console.log(auth?.currentUser)
     const signup = async (e) => {
        e.preventDefault();
        try {

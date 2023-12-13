@@ -1,6 +1,6 @@
 import { addDoc } from 'firebase/firestore';
 import useFirebase from './useFirebase';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 const ReportForm = () => {
     const {crimesCollection, getCrimes} = useFirebase();
     const [loading, setLoading] = useState(false);
@@ -13,8 +13,6 @@ const ReportForm = () => {
     const [crimeLocation, setCrimeLocation] = useState('');
     const [error, setError] = useState(false);
     const [message, setMessage] = useState(false);
-
-    const emailReset = useRef(null)
     const handleSubmit = async (e) => {
         console.log(e)
         e.preventDefault();

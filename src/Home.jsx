@@ -1,9 +1,11 @@
 import Navbar from './Navbar';
 import ReportForm from './ReportFrom';
+import {auth} from './config/firebase';
 const Home = () => {
+    console.log(auth?.currentUser);
     return ( 
     <div className="home">
-        <Navbar/>
+        <Navbar user={auth?.currentUser}/>
         <div className="details">
         <div className="intro">
             <h2>Online Crime Record Management System</h2>

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
-import login from './assets/login.svg';
 import handCuff from './assets/handcuff.svg';
-const Navbar = ({ signOut }) => {
+const Navbar = ({ signOut, user }) => {
+    console.log(user)
     return ( 
         <div className="navbar">
             <div className="items">
@@ -9,9 +9,9 @@ const Navbar = ({ signOut }) => {
                     <h1><Link to='/'><img src={handCuff} alt="handcuff" />Crime <span>Watch</span></Link></h1>
                 </div>
                 <div className="login">
-                    <Link to='/signup'>Signup</Link>
-                    <Link onClick={signOut} to='/'>Logout</Link>
-                    <Link to="/login">Login</Link>
+                    {user === null ? <Link to='/signup'>Signup</Link> : <Link to='/'  onClick={signOut}>Logout</Link>}
+                    <Link to='/userLogin'>Login</Link>
+                    <Link to="/login">Login(admin)</Link>
                 </div>
             </div>
         </div>

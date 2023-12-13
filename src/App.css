@@ -39,7 +39,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 150px;
+    width: 200px;
 }
 
 .navbar .items .login a {
@@ -168,10 +168,10 @@
 
 .signup .signup-form form input{
     width: 250px;
-        height: 27px;
-        margin: 4px 0 4px 50px;
-        border: 0;
-        border-radius: 5px 5px 5px 5px;
+    height: 27px;
+    margin: 4px 0 4px 50px;
+    border: 0;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .signup .signup-form form button {
@@ -202,6 +202,54 @@
     border-radius: 10px;
     margin-right: 130px;
  
+}
+/*User Login*/
+.user-login .user-form {
+    width: 350px;
+    height: 370px;
+    background-color: #d2d4c0;
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 7rem;   
+}
+
+.user-login .user-form form input{
+    width: 250px;
+    height: 27px;
+    margin: 4px 0 4px 50px;
+    border: 0;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.user-login .user-form form button {
+    width: 130px;
+    height: 30px;
+    border: 0;
+    cursor: pointer;
+    margin-left: 125px;
+    background: rgb(3, 15, 77);
+    color: white;
+    border-radius: 10px;
+    margin-right: 100px;
+}
+
+.user-login .user-form form h4 {
+    text-align: center;
+}
+
+.user-login .user-form button {
+        width: 130px;
+            height: 30px;
+            border: 0;
+            cursor: pointer;
+            margin-left: 125px;
+            background: rgb(3, 15, 77);
+            color: white;
+            border-radius: 10px;
+            margin-right: 100px;
 }
 /*ADMIN LOGIN*/
 

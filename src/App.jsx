@@ -7,6 +7,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Unknown from './Unknown';
 import Dashboard from './Dashboard';
+import UserLogin from './UserLogin';
 const App = () => {
   
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/userLogin' element={<UserLogin/>}/>
         <Route path='/dashboard/:id' element={<Dashboard/>}/>
         <Route path='/report' element={<Report/>}/>
         <Route path='/details/:id' element={<Check />}/>
