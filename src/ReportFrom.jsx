@@ -20,6 +20,7 @@ const ReportForm = () => {
     const fileReset = useRef(null)
     const emailReset = useRef(null)
     const handleSubmit = async (e) => {
+        console.log(e)
         e.preventDefault();
         setLoading(true);
         try {
@@ -45,7 +46,7 @@ const ReportForm = () => {
             setError(error);
             setMessage(false);
         }
-     };
+    };
     return ( 
     <div className="report-form">
             <div className="form">

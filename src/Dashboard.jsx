@@ -80,7 +80,7 @@ const Dashboard = () => {
                         <h5 className='cell' style={{paddingLeft: '5px'}}>{crime.crimeType}</h5>
                         <p className='cell' style={{paddingLeft: '40px'}}>{crime.date}</p>
                          <div  className='cell'style={{ background: 'rgba(234, 26, 241, 0.4)', border: '1px solid #a92cad', borderRadius: '10px 10px 10px 10px', textAlign: 'center', color: '#3f0e40', marginBottom: '2px', marginTop: '2px'}}>Pending</div>
-                         <Link className='cell' to={`details/${crime.id}`}><button style={{ border: '0', background: '#d7006f', width: '80px', height: '26px', borderRadius: '10px 10px 10px 10px', cursor: 'pointer', marginLeft: '60px', marginBottom: '2px', marginTop: '2px'}}>View Details</button></Link>
+                         <Link className='cell' to={`/details/${crime.id}`}><button style={{ border: '0', background: '#d7006f', width: '80px', height: '26px', borderRadius: '10px 10px 10px 10px', cursor: 'pointer', marginLeft: '60px', marginBottom: '2px', marginTop: '2px'}}>View Details</button></Link>
                      </div>
                    ))}
                 {error && <div>OOPSIE!!!</div>}

@@ -5,6 +5,7 @@ import View from './View';
 import {doc, getDoc} from 'firebase/firestore';
 const Check = () => {
    const {id} = useParams();
+   if(!id) setError(true)
    const co = doc(docRef, 'crimes', id);
    const [crime, setCrime] = useState();
    const [error, setError] = useState();

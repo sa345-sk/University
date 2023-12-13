@@ -15,7 +15,7 @@ const Login = () => {
       try {
         const admin = await signInWithEmailAndPassword(auth, email, password);
         console.log(admin.user.uid);
-        navigate(`/dashboard`);
+        navigate(`/dashboard/${admin.user.uid}`);
         setError(false);
       } catch (error) {
         console.log(error);
