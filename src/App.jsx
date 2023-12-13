@@ -6,7 +6,6 @@ import Check from './Check';
 import Login from './Login';
 import Signup from './Signup';
 import Unknown from './Unknown';
-import View from './View';
 import Dashboard from './Dashboard';
 const App = () => {
   

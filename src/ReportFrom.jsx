@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 const ReportForm = () => {
     const {crimesCollection, getCrimes, error: fi} = useFirebase();
     const [loading, setLoading] = useState(false);
-    const [email, settEmail] = useState();
+    const [email, setEmail] = useState();
     const [crimeType, setCrimeType] = useState();
     const [date, setDate] = useState();
     const [body, setBody] = useState();
@@ -13,11 +13,7 @@ const ReportForm = () => {
     const [crimeLocation, setCrimeLocation] = useState('');
     const [error, setError] = useState(false);
     const [message, setMessage] = useState(false);
-    const crimeTypeReset = useRef(null)
-    const dateReset = useRef(null)
-    const bodyReset = useRef(null)
-    const crimeLocationReset = useRef(null)
-    const fileReset = useRef(null)
+
     const emailReset = useRef(null)
     const handleSubmit = async (e) => {
         console.log(e)
@@ -30,16 +26,12 @@ const ReportForm = () => {
             console.log(fi)
             setLoading(false);
             setError(false);
-            if (emailReset.current) {
-                emailReset.current.value = '';
-                crimeLocationReset.current.value = '';
-                dateReset.current.value = '';
-                emailReset.current.value = '';
-                crimeTypeReset.current.value = '';
-                bodyReset.current.value = '';
-                let logme = fileReset.current.value = '';
-                console.log(logme)
-            }
+            setBody('')
+            setFile('');
+            setEmail('');
+            setDate('');
+            setCrimeType('');
+            setCrimeLocation('');
         } catch (error) {
             console.log(error);
             setLoading(false);
@@ -53,8 +45,8 @@ const ReportForm = () => {
                  {/*This is the report form that the user is going to fill*/}
                 <form onSubmit={handleSubmit}>
                     <h4>Report a crime</h4>
-                    <input type="email" placeholder="Email here" required value={email} onChange={(e) => settEmail(e.target.value)} ref={emailReset} defaultValue=''/>
-                    <select value={crimeType} onChange={(e) => setCrimeType(e.target.value)} required ref={crimeTypeReset} defaultValue=''>
+                    <input type="email" placeholder="Email here" required value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <select value={crimeType} onChange={(e) => setCrimeType(e.target.value)} required>
                         <option selected>None</option>
                         <option >Robbery</option>
                         <option >Fighting</option>
@@ -67,12 +59,12 @@ const ReportForm = () => {
                         <option>Financial Crime</option>
                         <option>Misbehaving</option>
                     </select>
-                    <input type="text" placeholder="Crime location" required value={crimeLocation} onChange={(e) => setCrimeLocation(e.target.value)} ref={crimeLocationReset} defaultValue=''/>
-                    <textarea placeholder="Kindly write down the detail of the crime." required value={body} onChange={(e) => setBody(e.target.value)} ref={bodyReset} defaultValue=''></textarea>
+                    <input type="text" placeholder="Crime location" required value={crimeLocation} onChange={(e) => setCrimeLocation(e.target.value)}/>
+                    <textarea placeholder="Kindly write down the detail of the crime." required value={body} onChange={(e) => setBody(e.target.value)}></textarea>
                     <label style={{display: 'block', textAlign: 'left', paddingLeft: '50px'}}>Date crime was committed.</label>
-                    <input type="date" required value={date} onChange={(e) => setDate(e.target.value)} ref={dateReset} defaultValue=''/>
+                    <input type="date" required value={date} onChange={(e) => setDate(e.target.value)}/>
                     <label style={{ display: 'block', textAlign: 'left', paddingLeft: '50px' }}>Add evidence (if any).</label>
-                    <input type="file" value={file} ref={fileReset} defaultValue=''/>
+                    <input type="file" value={file}/>
                     {!loading && <button>Submit</button>}
                     {loading && <button>Submitng...</button>}
                     {message && <div style={{ padding: '20px', background: '#effff0', border: '1px solid #2ee719', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#2ee719'}}>Complaint lodged successfully, you will be contacted if necessary.</div>}
