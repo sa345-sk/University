@@ -10,7 +10,8 @@ const Navbar = ({ signOut }) => {
                 </div>
                 <div className="login">
                     <Link to='/signup'>Signup</Link>
-                    <Link to="/login"><img src={login} alt="login" />Login</Link>
+                    <Link onClick={signOut} to='/'>Logout</Link>
+                    <Link to="/login">Login</Link>
                 </div>
             </div>
         </div>

@@ -8,7 +8,9 @@ const Signup = () => {
     const [error, setError] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState(null);
-    const signup = async () => {
+    console.log(auth?.currentUser)
+    const signup = async (e) => {
+       e.preventDefault();
        try {
          await createUserWithEmailAndPassword(auth, email, password);
          navigate('/');
@@ -22,13 +24,12 @@ const Signup = () => {
      try {
         await signInWithPopup(auth, googleAuthProvider);
         navigate('/');
-
      } catch (error) {
         console.log(error);
         setError(error);
      }
     }
-    const signOut = async () => {
+    const signOutUser = async () => {
       try {
          await signOut(auth, googleAuthProvider);
          navigate('/');
@@ -38,7 +39,7 @@ const Signup = () => {
     }
     return ( 
     <div className="signup">
-            <Navbar signOut={signOut}/>
+            <Navbar signOut={signOutUser}/>   
             <main className="signup-form">
              <form onSubmit={signup}>
                <h4>Signup</h4>

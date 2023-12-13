@@ -2,7 +2,7 @@ import { addDoc } from 'firebase/firestore';
 import useFirebase from './useFirebase';
 import { useRef, useState } from 'react';
 const ReportForm = () => {
-    const {crimesCollection, getCrimes, error: fi} = useFirebase();
+    const {crimesCollection, getCrimes} = useFirebase();
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState();
     const [crimeType, setCrimeType] = useState();
@@ -23,7 +23,6 @@ const ReportForm = () => {
             await addDoc(crimesCollection,{email, crimeType, crimeLocation, body, date, adminComment})
             setMessage(true);
             getCrimes();
-            console.log(fi)
             setLoading(false);
             setError(false);
             setBody('')
