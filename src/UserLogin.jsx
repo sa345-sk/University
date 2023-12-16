@@ -29,7 +29,8 @@ const UserLogin = () => {
     return ( 
     <div className="user-login">
      <Navbar/>
-            <main className="user-form">
+     <div className="signupform">
+                <main className="user-form">
                 <form onSubmit={login}>
                     <h4>Login</h4>
                     <input type="email" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -39,6 +40,7 @@ const UserLogin = () => {
                 <button onClick={signupWithGoogle}>Continue With Google</button>
             {error && <div style={{ padding: '20px', background: '#ffefef', border: '1px solid #e7195a', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#e7195a' }}>{error.message}</div>}
             </main>
+     </div>
     </div> 
     );
 }

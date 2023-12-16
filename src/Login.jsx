@@ -26,6 +26,7 @@ const Login = () => {
     return ( 
         <div className="login-page">
             <Navbar/>
+            <div className="signupform">
             <main className="login-form">
                 <form onSubmit={login}>
                     <h4>Login here</h4>
@@ -35,6 +36,7 @@ const Login = () => {
                 </form>
               {error && <div style={{ padding: '20px', background: '#ffefef', border: '1px solid #e7195a', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#e7195a'}}>{error.message}</div>}
             </main>
+          </div>
         </div>
      );
 }

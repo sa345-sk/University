@@ -13,10 +13,10 @@ const Home = () => {
             <div className="info-report">
                 <div className="info">
                     <h3>How the system works</h3>
-                    <p>Report an on going crime by filling out the form on the right. Our system will notify school security and they will contact you if necessary. <br/>You will receive an invitation email to provide evidence.</p>
+                    <p>Report an on going crime by filling out the form. Our system will notify school security and they will contact you if necessary. <br/>You will receive an invitation email to provide evidence.</p>
                 </div>
                 <ReportForm />
-                        <div style={{ background: 'rgba(255, 211, 36, 0.5)', border: '#efc10b solid 1px', borderRadius: '10px', padding: '5px', width: '200px', height: '200px', marginLeft: '5px' }}>Note: If you have more than one file, kindly zip them into one archive and upload.</div>
+                        <div className='note'>Note: If you have more than one file, kindly zip them into one archive and upload.</div>
             </div>
         </div>
         </div>

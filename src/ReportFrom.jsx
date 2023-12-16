@@ -45,16 +45,7 @@ const ReportForm = () => {
                     <input type="email" placeholder="Email here" required value={email} onChange={(e) => setEmail(e.target.value)}/>
                     <select value={crimeType} onChange={(e) => setCrimeType(e.target.value)} required>
                         <option selected>None</option>
-                        <option >Robbery</option>
-                        <option >Fighting</option>
-                        <option >Exam Malpractice</option>
-                        <option>Kidnap</option>
-                        <option >Murder</option>
-                        <option>Cultism</option>
-                        <option >Rape</option>
                         <option>Drug Trafficking</option>
-                        <option>Financial Crime</option>
-                        <option>Misbehaving</option>
                     </select>
                     <input type="text" placeholder="Crime location" required value={crimeLocation} onChange={(e) => setCrimeLocation(e.target.value)}/>
                     <textarea placeholder="Kindly write down the detail of the crime." required value={body} onChange={(e) => setBody(e.target.value)}></textarea>

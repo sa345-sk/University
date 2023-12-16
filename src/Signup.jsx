@@ -38,19 +38,22 @@ const Signup = () => {
     }
     return ( 
     <div className="signup">
-            <Navbar signOut={signOutUser}/>   
-            <main className="signup-form">
-             <form onSubmit={signup}>
-               <h4>Signup</h4>
-                <input type="email" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                <button>Submit</button>
-             </form>
-             <p>Or</p>
-                <button onClick={signupWithGoogle}>Sign up with Google</button>
-                {error && <div style={{ padding: '20px', background: '#ffefef', border: '1px solid #e7195a', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#e7195a' }}>{error.message}</div>}
-            </main>
-    </div> );
+            <Navbar signOut={signOutUser}/>
+            <div className="signupform">
+               <main className="signup-form">
+               <form onSubmit={signup}>
+                  <h4>Signup</h4>
+                  <input type="email" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                  <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                  <button>Submit</button>
+               </form>
+               <p>Or</p>
+                  <button onClick={signupWithGoogle}>Sign up with Google</button>
+                  {error && <div style={{ padding: '20px', background: '#ffefef', border: '1px solid #e7195a', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#e7195a' }}>{error.message}</div>}
+               </main>
+            </div>   
+    </div> 
+    );
 }
   
 export default Signup;
