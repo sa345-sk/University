@@ -803,7 +803,7 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        width: 250px;
+        width: 120px;
         margin-top: 10px;
     }
 
@@ -1557,7 +1557,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 200px;
+        width: 100px;
     }
 
     .navbar .items .login a {
