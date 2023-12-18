@@ -45,9 +45,9 @@
 
     .navbar .items .login {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        width: 200px;
+        width: 100px;
         margin-top: 10px;
     }
 
@@ -284,7 +284,42 @@
         border-radius: 10px;
         margin-right: 100px;
     }
+   .user-login .user-form form {
+       height: fit-content;
+   }
 
+   .user-login .user-form .role-user {
+       width: 95px;
+       height: 45px;
+       background: rgb(3, 15, 77);
+       color: white;
+       text-align: center;
+       padding-top: 12px;
+       cursor: pointer;
+       transition: all 0.1s ease-in-out 0.1s;
+   }
+
+   .user-login .user-form .role-user:hover {
+       border-radius: 15px;
+       border: 1px solid white;
+   }
+
+   .user-login .user-form .role-admin {
+       width: 95px;
+       height: 45px;
+       background: rgb(3, 15, 77);
+       color: white;
+       text-align: center;
+       padding-top: 12px;
+       cursor: pointer;
+       transition: all 0.1s ease-in-out 0.1s;
+       margin-left: 10px;
+   }
+
+   .user-login .user-form .role-admin:hover {
+       border-radius: 15px;
+       border: 1px solid white;
+   }
     /*ADMIN LOGIN*/
 
     .login-page .login-form {
@@ -322,7 +357,48 @@
         text-align: center;
         padding: 5px 0;
     }
+.login-page .login-form form {
+    height: fit-content;
+}
 
+.login-page .login-form .role-user {
+    width: 95px;
+    height: 45px;
+    background: rgb(3, 15, 77);
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+}
+
+.login-page .login-form .role-user:hover {
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+.login-page .login-form .role-admin {
+    width: 95px;
+    height: 45px;
+    background: rgb(3, 15, 77);
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+    margin-left: 10px;
+}
+
+.login-page .login-form .role-admin:hover {
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+/*Dashboard*/
+.dashboard {
+    display: flex;
+    flex-flow: row wrap;
+}
     /*Dashboard*/
     .dashboard {
         display: flex;
@@ -967,7 +1043,42 @@
         border-radius: 10px;
         margin-right: 100px;
     }
+   .user-login .user-form form {
+       height: fit-content;
+   }
 
+   .user-login .user-form .role-user {
+       width: 95px;
+       height: 45px;
+       background: rgb(3, 15, 77);
+       color: white;
+       text-align: center;
+       padding-top: 12px;
+       cursor: pointer;
+       transition: all 0.1s ease-in-out 0.1s;
+   }
+
+   .user-login .user-form .role-user:hover {
+       border-radius: 15px;
+       border: 1px solid white;
+   }
+
+   .user-login .user-form .role-admin {
+       width: 95px;
+       height: 45px;
+       background: rgb(3, 15, 77);
+       color: white;
+       text-align: center;
+       padding-top: 12px;
+       cursor: pointer;
+       transition: all 0.1s ease-in-out 0.1s;
+       margin-left: 10px;
+   }
+
+   .user-login .user-form .role-admin:hover {
+       border-radius: 15px;
+       border: 1px solid white;
+   }
     /*ADMIN LOGIN*/
 
     .login-page .login-form {
@@ -1005,7 +1116,48 @@
         text-align: center;
         padding: 5px 0;
     }
+.login-page .login-form form {
+    height: fit-content;
+}
 
+.login-page .login-form .role-user {
+    width: 95px;
+    height: 45px;
+    background: rgb(3, 15, 77);
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+}
+
+.login-page .login-form .role-user:hover {
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+.login-page .login-form .role-admin {
+    width: 95px;
+    height: 45px;
+    background: rgb(3, 15, 77);
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+    margin-left: 10px;
+}
+
+.login-page .login-form .role-admin:hover {
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+/*Dashboard*/
+.dashboard {
+    display: flex;
+    flex-flow: row wrap;
+}
     /*Dashboard*/
     .dashboard {
         display: flex;
@@ -1589,7 +1741,38 @@
         margin: 0 auto;
         margin-top: 7rem;   
     }
-
+   .user-login .user-form form {
+    height: fit-content;
+   }
+   .user-login .user-form .role-user {
+    width: 95px;
+    height: 45px;
+    background: rgb(3, 15, 77);
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+   }
+   .user-login .user-form .role-user:hover {
+    border-radius: 15px;
+    border:  1px solid white;
+   }
+   .user-login .user-form .role-admin {
+    width: 95px;
+    height: 45px;
+    background: rgb(3, 15, 77);
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+    margin-left: 10px;
+   }
+    .user-login .user-form .role-admin:hover {
+    border-radius: 15px;
+    border:  1px solid white;
+   }
     .user-login .user-form form input{
         width: 250px;
         height: 27px;
@@ -1662,7 +1845,42 @@
     text-align: center;
     padding: 5px 0;
     }
+.login-page .login-form form {
+    height: fit-content;
+}
 
+.login-page .login-form .role-user {
+    width: 95px;
+    height: 45px;
+    background: rgb(3, 15, 77);
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+}
+
+.login-page .login-form .role-user:hover {
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+.login-page .login-form .role-admin {
+    width: 95px;
+    height: 45px;
+    background: rgb(3, 15, 77);
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+    margin-left: 10px;
+}
+
+.login-page .login-form .role-admin:hover {
+    border-radius: 15px;
+    border: 1px solid white;
+}
     /*Dashboard*/
     .dashboard {
     display: flex;

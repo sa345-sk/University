@@ -11,7 +11,6 @@ const Navbar = ({ signOut, user }) => {
                 <div className="login">
                     {user === null ? <Link to='/signup'>Signup</Link> : <Link to='/'  onClick={signOut}>Logout</Link>}
                     <Link to='/userLogin'>Login</Link>
-                    <Link to="/login">Login(admin)</Link>
                 </div>
             </div>
         </div>
