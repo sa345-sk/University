@@ -1,6 +1,7 @@
 import { addDoc } from 'firebase/firestore';
 import useFirebase from './useFirebase';
 import { useState } from 'react';
+import useFile from './useFile';
 const ReportForm = () => {
     const {crimesCollection, getCrimes} = useFirebase();
     const [loading, setLoading] = useState(false);
@@ -13,27 +14,29 @@ const ReportForm = () => {
     const [crimeLocation, setCrimeLocation] = useState('');
     const [error, setError] = useState(false);
     const [message, setMessage] = useState(false);
+    const {uploadFile} = useFile();
     const handleSubmit = async (e) => {
-        console.log(e)
         e.preventDefault();
         setLoading(true);
         try {
-            await addDoc(crimesCollection,{email, crimeType, crimeLocation, body, date, adminComment})
+            const collection = await addDoc(crimesCollection, {email, crimeType, crimeLocation, body, date, adminComment})
+            await uploadFile(file, collection.id);
+            console.log(collection.id);
             setMessage(true);
             getCrimes();
             setLoading(false);
             setError(false);
             setBody('')
-            setFile('');
             setEmail('');
             setDate('');
             setCrimeType('');
             setCrimeLocation('');
+            setFile(null);
         } catch (error) {
             console.log(error);
             setLoading(false);
             setError(error);
-            setMessage(false);
+            setMessage(null);
         }
     };
     return ( 
@@ -52,7 +55,7 @@ const ReportForm = () => {
                     <label style={{display: 'block', textAlign: 'left', paddingLeft: '50px'}}>Date crime was committed.</label>
                     <input type="date" required value={date} onChange={(e) => setDate(e.target.value)}/>
                     <label style={{ display: 'block', textAlign: 'left', paddingLeft: '50px' }}>Add evidence (if any).</label>
-                    <input type="file" value={file}/>
+                    <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
                     {!loading && <button>Submit</button>}
                     {loading && <button>Submitng...</button>}
                     {message && <div style={{ padding: '20px', background: '#effff0', border: '1px solid #2ee719', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#2ee719'}}>Complaint lodged successfully, you will be contacted if necessary.</div>}

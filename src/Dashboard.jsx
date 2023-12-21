@@ -1,5 +1,4 @@
 import {Link, useNavigate} from 'react-router-dom';
-import account from './assets/account.svg';
 import note from './assets/note.svg';
 import message from './assets/message.svg';
 import tick from './assets/tick.svg';
@@ -23,7 +22,10 @@ const Dashboard = () => {
     }
    }
    const { crimes, error, loading: wait} = useFetch();
-   console.log(crimes)
+   // if (crimes?.length === 0) {
+   //    console.log('no crimes to fetch')
+   // }
+
     return ( 
     <div className="dashboard">
           <div className="second-nav">
@@ -64,6 +66,7 @@ const Dashboard = () => {
                <span className='case'>Unresolved Cases</span>
             </div>
          </section>
+         <p>{state.message}</p>
                 <div className="table">
                   <h3 style={{paddingBottom: '10px'}}>Reported Crimes</h3>
                   <main className="headers">

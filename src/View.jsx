@@ -13,8 +13,6 @@ const View = (prop) => {
         try {
             await updateDoc(commentDoc, { adminComment: adminComment })
             alert('Successfully updated');
-            console.log('sucess');
-            console.log(crime.id);
             navigate('/dashboard');
         } catch (error) {
             console.log(error);
@@ -33,6 +31,7 @@ const View = (prop) => {
             <img src={note} alt="note" />
             <div>
                 <h4>{crime.crimeType}</h4>
+                <p>Email of the sender: {crime.email}</p>
                 <p>{crime.body}</p>
                 <p>Admin Comment: {crime.adminComment}</p>
                 <main className="response">

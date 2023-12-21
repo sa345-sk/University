@@ -44,7 +44,7 @@ const UserLogin = () => {
     }
     return ( 
     <div className="user-login">
-     <Navbar/>
+     <Navbar auth={auth?.currentUser}/>
      <div className="signupform">
                 <main className="user-form">
                 <form onSubmit={login}>

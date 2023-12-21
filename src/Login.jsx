@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import {auth} from './config/firebase';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {useNavigate, Link} from 'react-router-dom';
-const Login = () => {
+ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -41,7 +41,7 @@ const Login = () => {
   }
     return ( 
         <div className="login-page">
-            <Navbar/>
+            <Navbar auth={auth?.currentUser}/>
             <div className="signupform">
             <main className="login-form">
                 <form onSubmit={login}>
