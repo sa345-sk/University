@@ -21,7 +21,6 @@ const ReportForm = () => {
         try {
             const collection = await addDoc(crimesCollection, {email, crimeType, crimeLocation, body, date, adminComment})
             await uploadFile(file, collection.id);
-            console.log(await uploadFile(file, collection.id));
             setMessage(true);
             getCrimes();
             setLoading(false);

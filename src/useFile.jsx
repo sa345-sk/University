@@ -1,7 +1,7 @@
 import { ref, uploadBytes, listAll, getDownloadURL, getMetadata, list} from 'firebase/storage';
 import { v4 } from 'uuid';
 import { storage } from './config/firebase';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 const useFile = () => {
     const [error, setError] = useState(null);
     const filesRef = ref(storage, 'crimeFiles/');
@@ -10,7 +10,7 @@ const useFile = () => {
     const uploadFile = async (file, complaintid) => {
         try {
             if (file === null) return;
-            const fileRef = ref(storage, `crimeFiles/${file.name + v4()}`);
+            const fileRef = ref(storage, `crimeFiles/${file.name}_${complaintid}`);
             const metadata = {
                 customMetadata: {
                     'referenceTo': complaintid
@@ -40,24 +40,26 @@ const useFile = () => {
             const response = await listAll(filesRef); 
             const ID = [];
             for (const item of response.items) {
+                console.log('File Path:', item.fullPath);
                 try {
                     const fileRef = ref(storage, item.fullPath);
                     const metadata = await getMetadata(fileRef);
-                    const fileID = metadata.customMetadata.referenceTo;
-                    ID.push(fileID);
+                    ID.push(metadata.customMetadata.referenceTo);
                     setError(false);
                 } catch (error) {
                     console.log(error);
                     setError(error);
                 }
+                setIDs(ID)
             }
-            setIDs(ID)
-            console.log(IDs)
         } catch (error) {
             console.log('Error listing files:', error);
             setError(error);
         }
     };
+    useEffect(() => {
+        console.log(IDs);
+    }, [IDs])
     return { uploadFile, error, getFile, accessMetadata };
 }
 
