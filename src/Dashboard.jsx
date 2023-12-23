@@ -22,9 +22,6 @@ const Dashboard = () => {
     }
    }
    const { crimes, error, loading: wait} = useFetch();
-   // if (crimes?.length === 0) {
-   //    console.log('no crimes to fetch')
-   // }
 
     return ( 
     <div className="dashboard">
@@ -66,7 +63,7 @@ const Dashboard = () => {
                <span className='case'>Unresolved Cases</span>
             </div>
          </section>
-         <p>{state.message}</p>
+       
                 <div className="table">
                   <h3 style={{paddingBottom: '10px'}}>Reported Crimes</h3>
                   <main className="headers">

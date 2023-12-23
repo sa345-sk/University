@@ -1,6 +1,6 @@
 import { addDoc } from 'firebase/firestore';
 import useFirebase from './useFirebase';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useFile from './useFile';
 const ReportForm = () => {
     const {crimesCollection, getCrimes} = useFirebase();
@@ -9,19 +9,19 @@ const ReportForm = () => {
     const [crimeType, setCrimeType] = useState();
     const [date, setDate] = useState();
     const [body, setBody] = useState();
-    const [file, setFile] = useState();
+    const [file, setFile] = useState('');
     const [adminComment, setAdminComment] = useState('');
     const [crimeLocation, setCrimeLocation] = useState('');
     const [error, setError] = useState(false);
     const [message, setMessage] = useState(false);
-    const {uploadFile} = useFile();
+    const { uploadFile, getFile, accessMetadata, error: fileError} = useFile();
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
             const collection = await addDoc(crimesCollection, {email, crimeType, crimeLocation, body, date, adminComment})
             await uploadFile(file, collection.id);
-            console.log(collection.id);
+            console.log(await uploadFile(file, collection.id));
             setMessage(true);
             getCrimes();
             setLoading(false);
@@ -39,6 +39,10 @@ const ReportForm = () => {
             setMessage(null);
         }
     };
+    useEffect(() => {
+        getFile();
+        accessMetadata();
+    }, [])
     return ( 
     <div className="report-form">
             <div className="form">
@@ -60,6 +64,7 @@ const ReportForm = () => {
                     {loading && <button>Submitng...</button>}
                     {message && <div style={{ padding: '20px', background: '#effff0', border: '1px solid #2ee719', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#2ee719'}}>Complaint lodged successfully, you will be contacted if necessary.</div>}
                     {error && <div style={{ padding: '20px', background: '#ffefef', border: '1px solid #e7195a', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#e7195a' }}>{error.message}</div>}
+                    {fileError && <div style={{ padding: '20px', background: '#ffefef', border: '1px solid #e7195a', height: '100px', margin: '20px 0', borderRadius: '4px', color: '#e7195a' }}>{fileError.message}</div>}
                 </form>
             </div>
     </div> 
