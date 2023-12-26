@@ -34,12 +34,10 @@ const UserLogin = () => {
             console.log(refUser.current.style.border = '3px solid #1d3de3');
             refAdmin.current.style.border = '0px solid rgb(3, 15, 77)'
             setIsCaled(true);
-            navigate('/userlogin')
         } else if (isCalled === true) {
         refAdmin.current.style.border = '3px solid #1d3de3';
         refUser.current.style.border = '0px solid rgb(3, 15, 77)';
         setIsCaled(false);
-        navigate('/login')
         }
     }
     return ( 

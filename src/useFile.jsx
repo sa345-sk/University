@@ -1,4 +1,4 @@
-import { ref, uploadBytes, listAll, getDownloadURL, getMetadata, list} from 'firebase/storage';
+import { ref, uploadBytes, listAll, getDownloadURL, getMetadata, list,} from 'firebase/storage';
 import { v4 } from 'uuid';
 import { storage } from './config/firebase';
 import {useEffect, useState} from 'react';
@@ -34,13 +34,13 @@ const useFile = () => {
         console.log(error);
         setError(error);
        }
-    }
+    } 
     const accessMetadata = async () => {
         try {
             const response = await listAll(filesRef); 
             const ID = [];
             for (const item of response.items) {
-                console.log('File Path:', item.fullPath);
+                
                 try {
                     const fileRef = ref(storage, item.fullPath);
                     const metadata = await getMetadata(fileRef);
@@ -57,10 +57,11 @@ const useFile = () => {
             setError(error);
         }
     };
+
     useEffect(() => {
         console.log(IDs);
     }, [IDs])
-    return { uploadFile, error, getFile, accessMetadata };
+    return { uploadFile, error, getFile, accessMetadata, files, IDs, };
 }
 
 export default useFile;

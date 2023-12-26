@@ -9,7 +9,7 @@ const Navbar = ({ signOut, auth }) => {
                 </div>
                 <div className="login">
                     {auth === null ? <Link to='/signup'>Signup</Link> : <Link to='/'  onClick={signOut}>Logout</Link>}
-                    <Link to='/userLogin'>Login</Link>
+                    <Link to='/userlogin'>Login</Link>
                 </div>
             </div>
         </div>
