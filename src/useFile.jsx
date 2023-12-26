@@ -35,7 +35,7 @@ const useFile = () => {
         setError(error);
        }
     } 
-    const accessMetadata = async () => {
+    const accessMetadata = async (id) => {
         try {
             const response = await listAll(filesRef); 
             const ID = [];
@@ -45,8 +45,8 @@ const useFile = () => {
                     const fileRef = ref(storage, item.fullPath);
                     const metadata = await getMetadata(fileRef);
                     ID.push(metadata.customMetadata.referenceTo);
-                    if (metadata.customMetadata && metadata.customMetadata.referenceTo === ) {
-                        
+                    if (metadata.customMetadata && metadata.customMetadata.referenceTo === id) {
+                        console.log("mathced metadata", item.fullPath);
                     }
                     setError(false);
                 } catch (error) {
@@ -62,7 +62,7 @@ const useFile = () => {
     };
 
     useEffect(() => {
-        console.log(IDs);
+        // console.log(IDs);
     }, [IDs])
     return { uploadFile, error, getFile, accessMetadata, files, IDs, };
 }

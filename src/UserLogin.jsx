@@ -8,7 +8,8 @@ const UserLogin = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const navigate = useNavigate();
-    const login = async () => {
+    const login = async (e) => {
+        e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password); 
             navigate('/');
@@ -46,7 +47,7 @@ const UserLogin = () => {
      <div className="signupform">
                 <main className="user-form">
                 <form onSubmit={login}>
-                    <h4>Login here s</h4>
+                    <h4>Login here</h4>
                     <input type="email" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}  required />
                     <button>Submit</button>
