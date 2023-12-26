@@ -41,7 +41,7 @@ const Signup = () => {
             <Navbar signOut={signOutUser}/>
             <div className="signupform">
                <main className="signup-form">
-               <form onSubmit={signup}>
+                <form onSubmit={signup}>
                   <h4>Signup</h4>
                   <input type="email" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                   <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} required />

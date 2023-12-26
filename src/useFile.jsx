@@ -45,6 +45,9 @@ const useFile = () => {
                     const fileRef = ref(storage, item.fullPath);
                     const metadata = await getMetadata(fileRef);
                     ID.push(metadata.customMetadata.referenceTo);
+                    if (metadata.customMetadata && metadata.customMetadata.referenceTo === ) {
+                        
+                    }
                     setError(false);
                 } catch (error) {
                     console.log(error);

@@ -22,12 +22,11 @@ const View = (prop) => {
         }
     }
     useEffect(() => {
-        IDs.forEach((id) => {
-            console.log(id);
-        })
-        accessMetadata();
+        // IDs.forEach((id) => {
+        //     console.log(id);
+        // })
+        accessMetadata(id);
         getFile();
-        // ifFileIsTheSame(id);
     }, [IDs]);
     return ( 
     <div className="v-c">
