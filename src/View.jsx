@@ -10,7 +10,7 @@ const View = (prop) => {
     const {crime, id: fileid} = prop;
     const [adminComment, setAdminComment] = useState('');
     const commentDoc = doc(docRef, 'crimes', fileid);
-    const {IDs, accessMetadata} = useFile();
+    const {accessMetadata, url} = useFile();
     const addComment = async () => {
         try {
             await updateDoc(commentDoc, { adminComment: adminComment })
@@ -24,13 +24,6 @@ const View = (prop) => {
     useEffect(() => {
         accessMetadata(fileid);
     }, []);
-    // IDs.forEach((id) => {
-    //  if (id === fileid) {
-    //      console.log("yes");
-    //     } else {
-    //         console.log("this do not math the existing id");
-    //     }
-    //  })
     return ( 
     <div className="v-c">
       <div className="nav-view"><h1>Info</h1></div>
@@ -40,7 +33,7 @@ const View = (prop) => {
                 <p>{crime.date.substring(8, 10)}</p>
                 <span>{crime.date.substring(5, 7)} / {crime.date.substring(0, 4)}</span>
             </div>
-            <img src={note} alt="note" />
+            <img src={url} alt="note" />
             <div>
                 <h4>{crime.crimeType}</h4>
                 <p>Email of the sender: {crime.email}</p>

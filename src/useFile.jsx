@@ -6,6 +6,7 @@ const useFile = () => {
     const filesRef = ref(storage, 'crimeFiles/');
     const [files, setFiles] = useState([]);
     const [IDs, setIDs] = useState([]);
+    const [url, setUrl] = useState('');
     const uploadFile = async (file, complaintid) => {
         try {
             if (file === null) return;
@@ -48,6 +49,7 @@ const useFile = () => {
                         console.log('Confirmed metadata');
                         const downloadurl = await getDownloadURL(fileRef);
                         console.log(downloadurl);
+                        setUrl(downloadurl);
                     } else {
                         console.log('Unknown metadata');
                     }
@@ -65,7 +67,7 @@ const useFile = () => {
     };
 
 
-    return { uploadFile, error, getFile, accessMetadata, files, IDs, };
+    return { uploadFile, error, getFile, accessMetadata, IDs, url};
 }
 
 export default useFile;
