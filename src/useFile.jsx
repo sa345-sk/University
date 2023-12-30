@@ -35,7 +35,7 @@ const useFile = () => {
         setError(error);
        }
     } 
-    const accessMetadata = async (id) => {
+    const accessMetadata = async () => {
         try {
             const response = await listAll(filesRef); 
             const ID = [];
@@ -44,9 +44,9 @@ const useFile = () => {
                 try {
                     const fileRef = ref(storage, item.fullPath);
                     const metadata = await getMetadata(fileRef);
-                    ID.push(metadata.customMetadata.referenceTo);
-                    if (metadata.customMetadata && metadata.customMetadata.referenceTo === id) {
-                        console.log("mathced metadata", item.fullPath);
+                    if (metadata.customMetadata) {
+                        ID.push(metadata.customMetadata.referenceTo);
+                        console.log('Confirmed metadata');
                     }
                     setError(false);
                 } catch (error) {

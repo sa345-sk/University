@@ -10,7 +10,7 @@ const View = (prop) => {
     const {crime, id} = prop;
     const [adminComment, setAdminComment] = useState('');
     const commentDoc = doc(docRef, 'crimes', id);
-    const {accessMetadata, getFile, files, IDs, } = useFile();
+    const {IDs, accessMetadata} = useFile();
     const addComment = async () => {
         try {
             await updateDoc(commentDoc, { adminComment: adminComment })
@@ -22,11 +22,7 @@ const View = (prop) => {
         }
     }
     useEffect(() => {
-        // IDs.forEach((id) => {
-        //     console.log(id);
-        // })
-        accessMetadata(id);
-        getFile();
+     accessMetadata();
     }, [IDs]);
     return ( 
     <div className="v-c">

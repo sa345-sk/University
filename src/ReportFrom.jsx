@@ -1,6 +1,6 @@
 import { addDoc } from 'firebase/firestore';
 import useFirebase from './useFirebase';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useFile from './useFile';
 const ReportForm = () => {
     const {crimesCollection, getCrimes} = useFirebase();
@@ -39,6 +39,7 @@ const ReportForm = () => {
             setMessage(null);
         }
     };
+
     return ( 
     <div className="report-form">
             <div className="form">
