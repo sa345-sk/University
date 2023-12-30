@@ -1,7 +1,6 @@
 import { ref, uploadBytes, listAll, getDownloadURL, getMetadata, list,} from 'firebase/storage';
-import { v4 } from 'uuid';
 import { storage } from './config/firebase';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 const useFile = () => {
     const [error, setError] = useState(null);
     const filesRef = ref(storage, 'crimeFiles/');
@@ -35,7 +34,7 @@ const useFile = () => {
         setError(error);
        }
     } 
-    const accessMetadata = async () => {
+    const accessMetadata = async (id) => {
         try {
             const response = await listAll(filesRef); 
             const ID = [];
@@ -44,9 +43,13 @@ const useFile = () => {
                 try {
                     const fileRef = ref(storage, item.fullPath);
                     const metadata = await getMetadata(fileRef);
-                    if (metadata.customMetadata) {
-                        ID.push(metadata.customMetadata.referenceTo);
+                    ID.push(metadata.customMetadata.referenceTo);
+                    if (metadata.customMetadata && metadata.customMetadata.referenceTo === id) {
                         console.log('Confirmed metadata');
+                        const downloadurl = await getDownloadURL(fileRef);
+                        console.log(downloadurl);
+                    } else {
+                        console.log('Unknown metadata');
                     }
                     setError(false);
                 } catch (error) {
@@ -61,9 +64,7 @@ const useFile = () => {
         }
     };
 
-    useEffect(() => {
-        // console.log(IDs);
-    }, [IDs])
+
     return { uploadFile, error, getFile, accessMetadata, files, IDs, };
 }
 

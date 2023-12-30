@@ -7,9 +7,9 @@ import {useNavigate} from 'react-router-dom';
 import useFile from './useFile';
 const View = (prop) => {
     const navigate = useNavigate();
-    const {crime, id} = prop;
+    const {crime, id: fileid} = prop;
     const [adminComment, setAdminComment] = useState('');
-    const commentDoc = doc(docRef, 'crimes', id);
+    const commentDoc = doc(docRef, 'crimes', fileid);
     const {IDs, accessMetadata} = useFile();
     const addComment = async () => {
         try {
@@ -22,8 +22,15 @@ const View = (prop) => {
         }
     }
     useEffect(() => {
-     accessMetadata();
-    }, [IDs]);
+        accessMetadata(fileid);
+    }, []);
+    // IDs.forEach((id) => {
+    //  if (id === fileid) {
+    //      console.log("yes");
+    //     } else {
+    //         console.log("this do not math the existing id");
+    //     }
+    //  })
     return ( 
     <div className="v-c">
       <div className="nav-view"><h1>Info</h1></div>
