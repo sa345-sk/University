@@ -33,7 +33,6 @@ const ReportForm = () => {
             setCrimeLocation('');
             setFile([]);
         } catch (error) {
-            console.log(error);
             setLoading(false);
             setError(error);
             setMessage(null);

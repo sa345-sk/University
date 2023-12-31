@@ -14,11 +14,9 @@ import {useNavigate, Link} from 'react-router-dom';
      setLoading
       try {
         const admin = await signInWithEmailAndPassword(auth, email, password);
-        console.log(admin.user.uid);
         navigate(`/dashboard/${admin.user.uid}`);
         setError(false);
       } catch (error) {
-        console.log(error);
         setError(error);
         setLoading(false);
       }
@@ -28,7 +26,6 @@ import {useNavigate, Link} from 'react-router-dom';
   let [isCalled, setIsCaled] = useState(false);
   const switchAdminAndUser = () => {
     if (isCalled === false) {
-      console.log(refUser.current.style.border = '3px solid #1d3de3');
       refAdmin.current.style.border = '0px solid rgb(3, 15, 77)';
       navigate('/userlogin')
       setIsCaled(true);

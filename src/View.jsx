@@ -1,4 +1,3 @@
-import note from './assets/logout.svg';
 import {Link} from 'react-router-dom';
 import {updateDoc, doc} from 'firebase/firestore';
 import {docRef} from './config/firebase';
@@ -10,7 +9,7 @@ const View = (prop) => {
     const {crime, id: fileid} = prop;
     const [adminComment, setAdminComment] = useState('');
     const commentDoc = doc(docRef, 'crimes', fileid);
-    const {accessMetadata, url} = useFile();
+    const {accessMetadata, url, fileType} = useFile();
     const addComment = async () => {
         try {
             await updateDoc(commentDoc, { adminComment: adminComment })
@@ -23,9 +22,30 @@ const View = (prop) => {
     }
     useEffect(() => {
         accessMetadata(fileid);
-    }, []);
+    }, [fileid]);
+    const parts = fileType.split('/');
+    const type = parts[0];
+    const getFileType = () => {
+        if (type === 'image') {
+            return (<img src={url} alt='Crime evidence'/>)
+        } else if (type === 'video'){
+            return (
+            <video controls>
+              <source src={url} type={fileType} />
+            </video>);
+        } else if (type === 'audio'){
+            return (
+            <audio controls>
+               <source src={url} type={fileType}/>
+            </audio>);
+        } else if (type === 'application') {
+            return (<Link to={url}>This is a zip file</Link>)
+        } else {
+            return (<p>This crime do not have an evidence.</p>)
+        }
+    }
     return ( 
-    <div className="v-c">
+        <div className="v-c">
       <div className="nav-view"><h1>Info</h1></div>
       <div className="crimes">
         <article>
@@ -33,7 +53,7 @@ const View = (prop) => {
                 <p>{crime.date.substring(8, 10)}</p>
                 <span>{crime.date.substring(5, 7)} / {crime.date.substring(0, 4)}</span>
             </div>
-            <img src={url} alt="note" />
+             {getFileType()}
             <div>
                 <h4>{crime.crimeType}</h4>
                 <p>Email of the sender: {crime.email}</p>

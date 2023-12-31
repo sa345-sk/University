@@ -23,7 +23,6 @@ const UserLogin = () => {
             await signInWithPopup(auth, googleAuthProvider);
             navigate('/');
         } catch (error) {
-            console.log(error);
             setError(error);
         }
     }

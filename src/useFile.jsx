@@ -1,4 +1,4 @@
-import { ref, uploadBytes, listAll, getDownloadURL, getMetadata, list,} from 'firebase/storage';
+import { ref, uploadBytes, listAll, getDownloadURL, getMetadata} from 'firebase/storage';
 import { storage } from './config/firebase';
 import {useState} from 'react';
 const useFile = () => {
@@ -7,6 +7,7 @@ const useFile = () => {
     const [files, setFiles] = useState([]);
     const [IDs, setIDs] = useState([]);
     const [url, setUrl] = useState('');
+    const [fileType, setFileType] = useState('');
     const uploadFile = async (file, complaintid) => {
         try {
             if (file === null) return;
@@ -31,7 +32,6 @@ const useFile = () => {
            });
            setError(false);
        } catch (error) {
-        console.log(error);
         setError(error);
        }
     } 
@@ -46,28 +46,24 @@ const useFile = () => {
                     const metadata = await getMetadata(fileRef);
                     ID.push(metadata.customMetadata.referenceTo);
                     if (metadata.customMetadata && metadata.customMetadata.referenceTo === id) {
-                        console.log('Confirmed metadata');
                         const downloadurl = await getDownloadURL(fileRef);
-                        console.log(downloadurl);
                         setUrl(downloadurl);
-                    } else {
-                        console.log('Unknown metadata');
+                        const fileType = metadata.contentType;
+                        setFileType(fileType);
                     }
                     setError(false);
                 } catch (error) {
-                    console.log(error);
                     setError(error);
                 }
                 setIDs(ID)
             }
         } catch (error) {
-            console.log('Error listing files:', error);
             setError(error);
         }
     };
 
 
-    return { uploadFile, error, getFile, accessMetadata, IDs, url};
+    return { uploadFile, error, getFile, accessMetadata, IDs, url, fileType};
 }
 
 export default useFile;

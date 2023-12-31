@@ -17,7 +17,6 @@ const Dashboard = () => {
       await signOut(auth);
       navigate('/');
     } catch (error) {
-      console.log(error);
       alert('Failed to fetch!')
     }
    }
